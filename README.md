@@ -1,5 +1,7 @@
 # Codenames
- Simple web app implementation of the board game Codenames:
+ Simple web app implementation of the board game Codenames using Python/Flask
+ 
+ Rules:
  https://en.wikipedia.org/wiki/Codenames_(board_game)
 
 ![Codenames](/demo_screenshot.png?raw=true)
