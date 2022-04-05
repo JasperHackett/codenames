@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  		<meta http-equiv="refresh" content="5">
+      <title>Network Tracker</title>
+  </head>
+  <body>
+       <h1> Hello ,{{ user.username }} !</h1>
+       {% for post in posts %}
+           <div><p>{{ post.author.username }} :<b>{{ post.body }}</b></p></div>
+       {% endfor %}
+  </body>
+</html>
