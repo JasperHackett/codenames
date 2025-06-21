@@ -1,6 +1,5 @@
-from flask import Flask
-from flask import render_template
-from flask import request
+import os
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import random
 
 
@@ -13,7 +12,6 @@ with open("codenames.txt") as f:
     for line in f:
         word = line.rstrip()
         wordlist.append(word)
-
 
 def getgrid():
     positions = []
@@ -55,6 +53,7 @@ def getwords():
     return
 
 
+
 getwords()
 app = Flask(__name__)
 
@@ -94,6 +93,24 @@ def grid():
     #     # print (len(boardvalues))
 
     return render_template('grid.html',boardvalues=boardvalues)
+
+
+
+@app.route('/reset', methods=['GET', 'POST'])
+def reset():
+    if request.method == 'POST':
+        getwords()
+        return redirect(url_for('board'))
+    return '''
+        <form method="post">
+            <button type="submit">Reset Grid</button>
+        </form>
+    '''
+
+@app.route('/board_state')
+def board_state():
+    return jsonify(shownvalues)
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
